@@ -60,7 +60,7 @@ export default {
       dispatch('users/loginUser', {
         username: username.value,
         password: password.value,
-      })
+      }).then(() => dispatch('users/getCurrentUser'))
     }
 
     return {
@@ -68,7 +68,6 @@ export default {
       password,
       handleSubmit,
       error,
-      isAuth,
     }
   },
 }

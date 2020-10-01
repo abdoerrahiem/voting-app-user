@@ -11,3 +11,11 @@ export const setAuthToken = (token) => {
     delete axios.defaults.headers.common['x-auth-token']
   }
 }
+
+export const axiosCreate = axios.create({
+  baseURL: api,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+})

@@ -28,7 +28,11 @@
       >
         <i class="fas fa-sign-in-alt" /> Login
       </router-link>
-      <router-link v-else to="/login" @click="handleLogout">
+      <router-link
+        v-if="$route.name !== 'Login' && user"
+        to="/login"
+        @click="handleLogout"
+      >
         <i class="fas fa-sign-in-alt" /> Logout
       </router-link>
     </div>
@@ -45,6 +49,11 @@ export default {
     const { state, dispatch } = useStore()
 
     const user = computed(() => state.users.userData)
+
+    // watchEffect(() => {
+    //   // const user = computed(() => state.users.useData)
+    //   console.log(user.value)
+    // })
 
     const handleLogout = () => dispatch('users/logout')
 

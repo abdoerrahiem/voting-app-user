@@ -6,6 +6,7 @@ const users = {
 
   state() {
     return {
+      token: localStorage.getItem('token') || null,
       userData: null,
       isAuth: false,
       loading: false,
@@ -15,6 +16,22 @@ const users = {
   },
 
   actions: {
+    getCurrentUser: async ({ commit }) => {
+      commit('setLoading', true)
+
+      if (localStorage.token) {
+        setAuthToken(localStorage.token)
+      }
+
+      try {
+        const { data } = await axios.get(`${api}/users/me`)
+        commit('getCurrentUser', data)
+      } catch (error) {
+        console.log(error.response.data)
+      }
+
+      commit('setLoading', false)
+    },
     loginUser: async ({ commit }, enteredData) => {
       commit('setLoading', true)
 
@@ -24,25 +41,11 @@ const users = {
           enteredData,
           config
         )
+        localStorage.setItem('token', data.token)
+        setAuthToken(data.token)
         commit('loginUser', data)
       } catch (error) {
         commit('setError', error.response.data)
-      }
-
-      commit('setLoading', false)
-    },
-    getCurrentUser: async ({ commit }) => {
-      commit('setLoading', true)
-
-      if (localStorage.Authorization) {
-        setAuthToken(localStorage.Authorization)
-      }
-
-      try {
-        const { data } = await axios.get(`${api}/users/me`)
-        commit('getCurrentUser', data)
-      } catch (error) {
-        // commit('setError', error.response.data)
       }
 
       commit('setLoading', false)
@@ -59,7 +62,7 @@ const users = {
       }, 5000)
     },
     loginUser: (state, userData) => {
-      localStorage.setItem('Authorization', userData.token)
+      state.token = userData.token
       state.isAuth = true
     },
     getCurrentUser: (state, userData) => {
@@ -67,7 +70,7 @@ const users = {
       state.isAuth = true
     },
     logout: (state) => {
-      localStorage.removeItem('Authorization')
+      localStorage.removeItem('token')
       state.userData = null
       state.isAuth = false
       state.loading = false
