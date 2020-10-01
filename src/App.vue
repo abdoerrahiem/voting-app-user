@@ -16,6 +16,9 @@ export default {
     Navbar,
     Footer,
   },
+  created() {
+    this.$store.dispatch('users/getCurrentUser')
+  },
 }
 </script>
 
