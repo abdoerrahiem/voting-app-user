@@ -80,6 +80,7 @@ export default {
   align-items: center;
   padding: 3rem;
   height: 83%;
+  margin-top: 3rem;
 }
 
 .login > div {

@@ -28,7 +28,8 @@ export default {
   align-items: center;
   justify-content: space-around;
   padding: 0.5rem;
-  height: 85vh;
+  height: 100% - 7rem;
+  margin-top: 3rem;
 }
 
 .home__images {

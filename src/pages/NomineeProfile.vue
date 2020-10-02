@@ -22,7 +22,7 @@
             </div>
             <div>
               <p>{{candidateData.nameOfChairman}}</p>
-              <p>{{candidateData.birthdayOfChairman}}</p>
+              <p>{{moment(candidateData.birthdayOfChairman).format('LL')}}</p>
               <p>{{candidateData.addressOfChairman}}</p>
               <p>
                 <ul>
@@ -33,7 +33,6 @@
               </p>
             </div>
             </div>
-            
           </td>
 
           <td class="self">
@@ -47,7 +46,7 @@
             </div>
              <div>
               <p>{{candidateData.nameOfViceChairman}}</p>
-              <p>{{candidateData.birthdayOfViceChairman}}</p>
+              <p>{{moment(candidateData.birthdayOfViceChairman).format('LL')}}</p>
               <p>{{candidateData.addressOfViceChairman}}</p>
               <p>
                 <ul>
@@ -72,9 +71,11 @@
 </template>
 
 <script>
+import * as moment from 'moment/moment'
+import 'moment/locale/id'
 import { computed, ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
-import {useRoute} from 'vue-router'
+import { useRoute } from 'vue-router'
 import profileImage from '../assets/profile.jpg'
 import ProfileModal from '../components/ProfileModal'
 import Spinner from '../components/Spinner'
@@ -83,14 +84,14 @@ export default {
   name: 'NomineeProfile',
   components: {
     ProfileModal,
-    Spinner
+    Spinner,
   },
   setup() {
     const showProfileModal = ref(false)
     const visionAndMission = ref(true)
     const motto = ref(true)
     const store = useStore()
-    const {params} = useRoute()
+    const { params } = useRoute()
 
     onMounted(() => store.dispatch('candidates/getCandidate', params.id))
 
@@ -120,7 +121,8 @@ export default {
       setShowProfileModal,
       setHideProfileModal,
       candidateData,
-      loading
+      loading,
+      moment,
     }
   },
 }
@@ -129,13 +131,14 @@ export default {
 <style>
 .nomineeProfile {
   height: 100%;
+  margin-top: 3.5rem;
 }
 
 .nomineeProfile > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 3rem
+  padding: 1.5rem 3rem;
 }
 
 .nomineeProfile img {

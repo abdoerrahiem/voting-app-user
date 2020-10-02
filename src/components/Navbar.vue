@@ -2,6 +2,7 @@
   <div class="navbar">
     <router-link to="/" class="navbar__title">E-Voting</router-link>
     <div class="navbar__menus">
+      <img v-if="user" :src="user.photo" alt="" />
       <small>Welcome, {{ user ? `${user.name}!` : 'Stranger!' }}</small>
       <router-link
         to="/quick-count"
@@ -50,11 +51,6 @@ export default {
 
     const user = computed(() => state.users.userData)
 
-    // watchEffect(() => {
-    //   // const user = computed(() => state.users.useData)
-    //   console.log(user.value)
-    // })
-
     const handleLogout = () => dispatch('users/logout')
 
     return {
@@ -71,9 +67,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 3rem;
+  padding: 0.7rem 3rem;
   color: #fff;
   min-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5rem;
 }
 
 .navbar__title {
@@ -122,5 +122,12 @@ export default {
 
 .navbar__menus a.login:hover {
   opacity: 0.5;
+}
+
+.navbar__menus > img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  margin-right: 0.7rem;
 }
 </style>

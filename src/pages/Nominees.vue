@@ -46,22 +46,25 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 100%;
-  height: 80vh;
-  margin-top: 2rem;
+  height: 100%;
+  /* margin-top: 2rem; */
 }
 
 .nominees__card {
   background: #fff;
   padding: 2rem;
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
   margin-bottom: 2rem;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+  width: 25rem;
 }
 
 .nominees__card > div {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nominees__card img {
@@ -73,6 +76,7 @@ export default {
 .nominees__card p {
   text-align: center;
   font-weight: bold;
+  font-size: 12px;
 }
 
 .nominees__card-chairman {
