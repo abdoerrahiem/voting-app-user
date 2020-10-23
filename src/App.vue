@@ -32,34 +32,38 @@ export default {
 body {
   font-family: 'Quicksand', sans-serif;
   background-color: #f0f2f5;
-  overflow-x: hidden;
 }
 
-a {
+main {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+/* a {
   text-decoration: none;
 }
 
 .app {
   width: 100vw;
   height: 100vh;
-}
+} */
 
 /* width */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 7px;
-}
+} */
 
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
-}
+} */
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   background: grey;
   border-radius: 10px;
-}
+} */
 
 /* Handle on hover */
 /* ::-webkit-scrollbar-thumb:hover {

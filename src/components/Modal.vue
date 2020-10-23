@@ -1,15 +1,11 @@
 <template>
   <div class="modal">
-    <div>
+    <div class="container">
       <i class="fas fa-times" @click="handleClick" />
       <div>
         <Alert v-if="success" :success="true" :message="success" />
         <Alert v-if="error" :error="true" :message="error" />
-        <Alert
-          v-if="!isAuth"
-          :error="true"
-          :message="`Silahkan login untuk dapat melakukan voting.`"
-        />
+        <Alert v-if="!isAuth" :error="true" :message="`Silahkan login.`" />
         <p>Anda yakin memilih pasangan ini?</p>
         <div class="buttons">
           <button @click="handleVote" :disabled="!isAuth || loading">
@@ -77,20 +73,21 @@ export default {
 .modal > div {
   background-color: #fff;
   height: 15rem;
-  width: 30rem;
+  width: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   border-radius: 5px;
+  padding: 1rem;
 }
 
 .modal p {
   text-align: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem;
   margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-top: 2rem; */
 }
 
 .modal button {

@@ -1,7 +1,11 @@
 <template>
-  <div class="footer">
+  <!-- <div class="footer">
     Copyright @ Abdur Rahim {{ new Date().getFullYear() }}
-  </div>
+  </div> -->
+
+  <nav class="fixed-bottom bg-primary py-3 text-white text-center">
+    Copyright @ Abdur Rahim {{ new Date().getFullYear() }}
+  </nav>
 </template>
 
 <script>
@@ -11,7 +15,7 @@ export default {
 </script>
 
 <style>
-.footer {
+/* .footer {
   background-color: #4c6ef5;
   color: rgb(216, 204, 204);
   text-align: center;
@@ -21,5 +25,5 @@ export default {
   bottom: 0;
   left: 0;
   height: 3.5rem;
-}
+} */
 </style>

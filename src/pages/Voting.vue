@@ -1,13 +1,18 @@
 <template>
-  <div class="nominees">
-    <NomineeCard
-      v-for="candidate in candidates"
-      :key="candidate._id"
-      :candidate="candidate"
-      :voting="true"
-    />
-    <Spinner v-show="loading && candidates.length === 0" />
-  </div>
+  <main>
+    <div
+      class="container d-flex flex-wrap justify-content-center align-items-center"
+    >
+      <NomineeCard
+        v-for="candidate in candidates"
+        :key="candidate._id"
+        :candidate="candidate"
+        :voting="true"
+      />
+    </div>
+
+    <Spinner v-if="loading && candidates.length === 0" />
+  </main>
 </template>
 
 <script>

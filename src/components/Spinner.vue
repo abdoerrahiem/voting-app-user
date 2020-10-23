@@ -1,5 +1,9 @@
 <template>
-  <div class="loader"></div>
+  <div class="d-flex justify-content-center text-primary">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -7,7 +11,7 @@ export default {}
 </script>
 
 <style scoped>
-.loader {
+/* .loader {
   border: 5px solid #f3f3f3;
   border-radius: 50%;
   border-top: 5px solid #3498db;
@@ -23,5 +27,5 @@ export default {}
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 </style>

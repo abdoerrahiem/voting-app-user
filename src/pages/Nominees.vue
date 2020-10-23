@@ -1,14 +1,18 @@
 <template>
-  <div class="nominees">
-    <NomineeCard
-      v-for="candidate in candidates"
-      :key="candidate._id"
-      :candidate="candidate"
-      :nominees="true"
-    />
+  <main>
+    <div
+      class="container d-flex flex-wrap justify-content-center align-items-center"
+    >
+      <NomineeCard
+        v-for="candidate in candidates"
+        :key="candidate._id"
+        :candidate="candidate"
+        :nominees="true"
+      />
+    </div>
 
-    <Spinner v-show="loading && candidates.length === 0" />
-  </div>
+    <Spinner v-if="loading && candidates.length === 0" />
+  </main>
 </template>
 
 <script>
@@ -42,20 +46,18 @@ export default {
 </script>
 
 <style>
-.nominees {
+/* .nominees {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   width: 100%;
   height: 100%;
-  /* margin-top: 2rem; */
 }
 
 .nominees__card {
   background: #fff;
   padding: 2rem;
-  /* margin-right: 2rem; */
   margin-bottom: 2rem;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
   width: 25rem;
@@ -107,5 +109,5 @@ export default {
 .nominees__card-link a:hover {
   color: #4c6ef5;
   background-color: #fff;
-}
+} */
 </style>
