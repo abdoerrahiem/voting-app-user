@@ -1,22 +1,30 @@
 <template>
-  <div class="quickCount">
-    <Spinner v-show="loading && candidates.length === 0" />
+  <main class="container">
+    <Spinner v-if="loading && candidates.length === 0" />
     <div v-if="candidates.length > 0">
-      <div>
-        <h2>Quick Count:</h2>
-        <p v-for="(candidate, index) in candidates" :key="candidate._id">
-          {{ index + 1 }}) {{ candidate.nameOfChairman }} &
-          {{ candidate.nameOfViceChairman }} : {{ candidate.totalSuara }} Suara
-        </p>
+      <div class="d-flex flex-wrap">
+        <div
+          v-for="(candidate, index) in candidates"
+          class="card text-center m-3 p-3"
+          :key="candidate._id"
+          style="width: 320px"
+        >
+          <span class="badge badge-dark">{{ index + 1 }}</span>
+          <p>
+            {{ candidate.nameOfChairman }} &
+            {{ candidate.nameOfViceChairman }}
+          </p>
+          <h3 class="text-info">{{ candidate.totalSuara }} Suara</h3>
+        </div>
       </div>
-      <div>
+      <div class="mb-4">
         <BarChart :candidates="candidates" />
       </div>
       <div>
         <PieChart :candidates="candidates" />
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -49,8 +57,16 @@ export default {
 }
 </script>
 
-<style>
-.quickCount {
+<style scoped>
+.badge {
+  width: 20px;
+  border-radius: 100%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+/* .quickCount {
   margin-top: 3.5rem;
 }
 
@@ -85,5 +101,5 @@ export default {
 .quickCount p {
   margin-bottom: 0.5rem;
   color: rgb(80, 106, 255);
-}
+} */
 </style>

@@ -1,27 +1,21 @@
 <template>
-  <div class="nomineeProfile">
-    <div>
-    <Spinner v-show="loading" />
-    <table v-if="candidateData && !loading">
-      <thead>
-        <tr>
-          <th>Ketua</th>
-          <th>Wakil Ketua</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="self">
-            <img :src="candidateData.photoOfChairman" alt="vice profile" />
-            <div>
-                <div>
-              <p>Nama :</p>
+  <main>
+    <Spinner v-if="loading" />
+      <ProfileModal v-if="showProfileModal && candidateData" :visionAndMission='visionAndMission' :motto='motto'  :candidateData='candidateData' @set-hide-profile-modal='setHideProfileModal' />
+      <div class="container" v-if="candidateData && !loading">
+    <div class="row">
+      <div class="col col-12 col-md-6 border mb-3 rounded">
+        <h3 class="text-center">Ketua</h3>
+        <img :src="candidateData.photoOfChairman" alt="vice profile" class="d-block mx-auto my-4" />
+        <div class="row">
+          <div class="col ">
+            <p>Nama :</p>
               <p>Tanggal Lahir :</p>
               <p>Alamat :</p>
               <p>Pengalaman :</p>
-            </div>
-            <div>
-              <p>{{candidateData.nameOfChairman}}</p>
+          </div>
+          <div class="col">
+            <p>{{candidateData.nameOfChairman}}</p>
               <p>{{moment(candidateData.birthdayOfChairman).format('LL')}}</p>
               <p>{{candidateData.addressOfChairman}}</p>
               <p>
@@ -31,21 +25,21 @@
                   </li>
                 </ul>
               </p>
-            </div>
-            </div>
-          </td>
-
-          <td class="self">
-            <img :src="candidateData.photoOfViceChairman" alt="vice profile" />
-            <div>
-                <div>
-              <p>Nama :</p>
+          </div>
+      </div>
+        </div>
+        <div class="col col-12 col-md-6 border mb-3 rounded">
+        <h3 class="text-center">Wakil Ketua</h3>
+        <img :src="candidateData.photoOfViceChairman" alt="vice profile" class="d-block mx-auto my-4" />
+        <div class="row">
+          <div class="col">
+            <p>Nama :</p>
               <p>Tanggal Lahir :</p>
               <p>Alamat :</p>
               <p>Pengalaman :</p>
-            </div>
-             <div>
-              <p>{{candidateData.nameOfViceChairman}}</p>
+          </div>
+          <div class="col">
+            <p>{{candidateData.nameOfViceChairman}}</p>
               <p>{{moment(candidateData.birthdayOfViceChairman).format('LL')}}</p>
               <p>{{candidateData.addressOfViceChairman}}</p>
               <p>
@@ -55,19 +49,18 @@
                   </li>
                 </ul>
               </p>
-            </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+      </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col buttons">
+          <button @click="setShowProfileModal('visionAndMission')" class="btn btn-primary rounded-pill">Lihat Visi dan Misi</button>
+    <button @click="setShowProfileModal('motto')" class="btn btn-primary rounded-pill">Lihat Motto</button>
+        </div>
+      </div>
     </div>
-    <div class="buttons" v-if="candidateData && !loading">
-    <button @click="setShowProfileModal('visionAndMission')">Lihat Visi dan Misi</button>
-    <button @click="setShowProfileModal('motto')">Lihat Motto</button>
-    </div>
-    <ProfileModal v-if="showProfileModal && candidateData" :visionAndMission='visionAndMission' :motto='motto'  :candidateData='candidateData' @set-hide-profile-modal='setHideProfileModal' />
-  </div>
+  </main>
 </template>
 
 <script>
@@ -128,99 +121,26 @@ export default {
 }
 </script>
 
-<style>
-.nomineeProfile {
-  height: 100%;
-  margin-top: 3.5rem;
-}
-
-.nomineeProfile > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem 3rem;
-}
-
-.nomineeProfile img {
+<style scoped>
+img {
   height: 10rem;
   width: 10rem;
   border-radius: 100%;
 }
 
-.nomineeProfile table,
-.nomineeProfile table th,
-.nomineeProfile table tr > td {
-  border: 1px solid #ddd;
-  border-collapse: collapse;
-  font-family: 'Quicksand', sans-serif;
-  padding: 1rem 0;
-}
-
-.nomineeProfile table {
-  width: 100%;
-}
-
-.nomineeProfile table th {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.nomineeProfile .self {
-  padding: 1rem;
-}
-
-.nomineeProfile .self img {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 1.5rem;
-}
-
-.nomineeProfile .self td {
-  padding: 0.5rem 0;
-}
-
-.nomineeProfile .self > div {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.nomineeProfile .self > div > div:first-child {
-  flex: 1;
-}
-
-.nomineeProfile .self > div > div:last-child {
-  flex: 1;
-}
-
-.nomineeProfile .self p {
-  margin-bottom: 1rem;
-}
-
-.nomineeProfile .self > div ul li {
+ul li {
   list-style: none;
   margin-bottom: 0.5rem;
 }
 
-.nomineeProfile .buttons {
-  margin: 0 auto;
+button {
+  margin: 10px;
+  padding: 5px 16px;
 }
 
-.nomineeProfile .buttons button {
-  width: 12rem;
-  margin-right: 1rem;
-  padding: 0.5rem 0;
-  font-family: 'Quicksand', sans-serif;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  border-radius: 3px;
-  background-color: #4c6ef5;
-  color: #fff;
-  letter-spacing: 2px;
-}
-
-.nomineeProfile .buttons button:hover {
-  opacity: 0.7;
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

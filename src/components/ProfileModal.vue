@@ -1,5 +1,5 @@
 <template>
-  <div class="profileModal">
+  <div class="profileModal container">
     <div>
       <div v-show="visionAndMission">
         <ul>
@@ -49,8 +49,8 @@ export default {
 
 .profileModal > div {
   background-color: #fff;
-  height: 20rem;
-  width: 40rem;
+  min-height: 300px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -45,6 +45,7 @@
             <i class="fas fa-sign-in-alt" /> Masuk
           </router-link>
           <router-link
+            class="nav-link"
             v-if="$route.name !== 'Login' && user"
             to="/login"
             @click="handleLogout"
