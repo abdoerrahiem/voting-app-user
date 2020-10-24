@@ -20,7 +20,7 @@ const router = createRouter({
     },
     { path: '/quick-count', name: 'QuickCount', component: QuickCount },
     { path: '/voting', name: 'Voting', component: Voting },
-    { path: '/*', component: NotFound },
+    { path: '/:catchAll(.*)', component: NotFound },
   ],
 })
 

@@ -1,7 +1,7 @@
 <template>
   <main>
     <div
-      class="container d-flex flex-wrap justify-content-center align-items-center"
+      class="container d-flex flex-wrap justify-content-center align-items-center w3-animate-top"
     >
       <NomineeCard
         v-for="candidate in candidates"

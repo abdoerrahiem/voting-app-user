@@ -22,7 +22,11 @@ export default {
     names() {
       let names = []
       this.candidates.map((can) =>
-        names.push(`${can.nameOfChairman} & ${can.nameOfViceChairman}`)
+        names.push(
+          `${can.nameOfChairman.split(' ')[0]} & ${
+            can.nameOfViceChairman.split(' ')[0]
+          }`
+        )
       )
       return names
     },

@@ -2,10 +2,12 @@
   <main>
     <div class="container py-6 home">
       <div class="row d-flex justify-content-center align-items-center">
-        <div class="col col-12 col-lg-4 col-md-6 col-sm-12">
+        <div class="col col-12 col-lg-4 col-md-6 col-sm-12 w3-animate-left">
           <img src="../assets/evoting.png" alt="evoting" class="img-fluid" />
         </div>
-        <div class="col col-12 col-lg-8 col-md-6 col-sm-12 text-center">
+        <div
+          class="col col-12 col-lg-8 col-md-6 col-sm-12 text-center w3-animate-right"
+        >
           <h3 class="mb-3">
             Selamat Datang di Aplikasi Voting Berbasis Online
           </h3>
@@ -34,5 +36,3 @@ export default {
 }
 </script>
 
-<style>
-</style>

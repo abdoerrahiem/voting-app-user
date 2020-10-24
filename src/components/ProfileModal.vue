@@ -1,6 +1,6 @@
 <template>
-  <div class="profileModal container">
-    <div>
+  <div class="profileModal">
+    <div class="container w3-animate-bottom">
       <div v-show="visionAndMission">
         <ul>
           <li

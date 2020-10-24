@@ -1,10 +1,12 @@
 <template>
-  <div class="notFound">
+  <main>
     <div>
-      <h3>The page you currently searched is not available.</h3>
-      <router-link to="/"> <i class="fas fa-home" /> Back To Home </router-link>
+      <h5 class="text-center mb-5">Halaman yang kamu cari tidak ditemukan.</h5>
+      <router-link to="/" class="btn btn-primary mx-auto d-block rounded-pill">
+        <i class="fas fa-home" /> Back To Home
+      </router-link>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -13,30 +15,15 @@ export default {
 }
 </script>
 
-<style>
-.notFound {
+<style scoped>
+a {
+  width: 200px;
+}
+
+main {
+  height: 70vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 85%;
-}
-
-.notFound h3 {
-  margin-bottom: 1.5rem;
-}
-
-.notFound a {
-  background-color: #4c6ef5;
-  display: block;
-  margin: 0 auto;
-  width: 10rem;
-  color: #fff;
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 3px;
-}
-
-.notFound a:hover {
-  opacity: 0.9;
+  align-items: center;
 }
 </style>

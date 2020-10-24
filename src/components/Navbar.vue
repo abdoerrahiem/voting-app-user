@@ -1,7 +1,12 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
-      <router-link class="navbar-brand" to="/">
+      <router-link
+        class="navbar-brand"
+        to="/"
+        data-toggle="collapse"
+        data-target=".navbar-collapse.show"
+      >
         <h3>E-VOTING</h3>
       </router-link>
       <button
@@ -22,18 +27,24 @@
             :class="
               $route.name === 'QuickCount' ? 'nav-link active' : 'nav-link'
             "
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
           >
             <i class="fas fa-chart-bar" /> Quick Count
           </router-link>
           <router-link
             to="/nominees"
             :class="$route.name === 'Nominees' ? 'nav-link active' : 'nav-link'"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
           >
             <i class="fas fa-user-friends" /> Nominasi
           </router-link>
           <router-link
             to="/voting"
             :class="$route.name === 'Voting' ? 'nav-link active' : 'nav-link'"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
           >
             <i class="fas fa-vote-yea" /> Voting
           </router-link>
@@ -41,6 +52,8 @@
             v-if="$route.name !== 'Login' && !user"
             to="/login"
             :class="$route.name === 'Login' ? 'nav-link active' : 'nav-link'"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
           >
             <i class="fas fa-sign-in-alt" /> Masuk
           </router-link>
@@ -78,6 +91,3 @@ export default {
   },
 }
 </script>
-
-<style>
-</style>

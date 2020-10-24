@@ -36,10 +36,12 @@
       <div
         class="row d-flex flex-wrap justify-content-center align-items-center"
       >
-        <div class="col col-12 col-md-6">
+        <div class="col col-12 col-md-6 w3-animate-left">
           <img src="../assets/login.png" alt="login" class="img-fluid" />
         </div>
-        <div class="col col-12 col-md-6 bg-primary p-4 rounded">
+        <div
+          class="col col-12 col-md-6 bg-primary p-4 rounded w3-animate-right"
+        >
           <h2 class="text-center text-white">Welcome!</h2>
           <h4 class="text-center text-white">Masukan Account Anda!</h4>
           <Alert v-if="error !== null" :error="true" :message="error" />

@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <div class="container">
+    <div class="container w3-animate-top">
       <i class="fas fa-times" @click="handleClick" />
       <div>
         <Alert v-if="success" :success="true" :message="success" />
@@ -85,9 +85,6 @@ export default {
 .modal p {
   text-align: center;
   font-weight: bold;
-  /* font-size: 1.5rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem; */
 }
 
 .modal button {

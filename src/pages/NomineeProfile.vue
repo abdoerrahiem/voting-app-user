@@ -3,7 +3,7 @@
     <Spinner v-if="loading" />
       <ProfileModal v-if="showProfileModal && candidateData" :visionAndMission='visionAndMission' :motto='motto'  :candidateData='candidateData' @set-hide-profile-modal='setHideProfileModal' />
       <div class="container" v-if="candidateData && !loading">
-    <div class="row">
+    <div class="row w3-animate-bottom">
       <div class="col col-12 col-md-6 border mb-3 rounded">
         <h3 class="text-center">Ketua</h3>
         <img :src="candidateData.photoOfChairman" alt="vice profile" class="d-block mx-auto my-4" />
@@ -136,6 +136,8 @@ ul li {
 button {
   margin: 10px;
   padding: 5px 16px;
+  font-size: 10px;
+  width: 120px;
 }
 
 .buttons {
