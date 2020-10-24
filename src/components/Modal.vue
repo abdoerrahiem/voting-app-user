@@ -118,7 +118,7 @@ export default {
 
 .modal > div > i {
   position: absolute;
-  right: -10px;
+  right: 47%;
   top: -10px;
   font-size: 1.5rem;
   color: #fff;
