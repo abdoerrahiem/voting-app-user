@@ -6,6 +6,7 @@
         <Alert v-if="success" :success="true" :message="success" />
         <Alert v-if="error" :error="true" :message="error" />
         <Alert v-if="!isAuth" :error="true" :message="`Silahkan login.`" />
+        <Spinner v-if="loading" class="mb-3" />
         <p>Anda yakin memilih pasangan ini?</p>
         <div class="buttons">
           <button @click="handleVote" :disabled="!isAuth || loading">
@@ -22,11 +23,13 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import Alert from './Alert'
+import Spinner from './Spinner'
 
 export default {
   name: 'Modal',
   components: {
     Alert,
+    Spinner,
   },
   props: ['candidateId'],
   setup(props, { emit }) {
