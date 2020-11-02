@@ -4,9 +4,6 @@
       <div
         class="row d-flex flex-wrap justify-content-center align-items-center"
       >
-        <div class="col col-12 col-md-6 w3-animate-left">
-          <img src="../assets/login.png" alt="login" class="img-fluid" />
-        </div>
         <div
           class="col col-12 col-md-6 bg-primary p-4 rounded w3-animate-right"
         >
@@ -17,7 +14,12 @@
           <form @submit.prevent="handleSubmit">
             <div>
               <i class="fas fa-user" />
-              <input type="text" placeholder="Username" v-model="username" />
+              <input
+                ref="input"
+                type="text"
+                placeholder="Username"
+                v-model="username"
+              />
             </div>
             <div>
               <i class="fas fa-lock" />
@@ -34,6 +36,9 @@
               <i class="fas fa-sign-in-alt" /> Login
             </button>
           </form>
+        </div>
+        <div class="col col-12 col-md-6 w3-animate-left">
+          <img src="../assets/login.png" alt="login" class="img-fluid" />
         </div>
       </div>
     </div>
@@ -56,6 +61,7 @@ export default {
   setup() {
     const username = ref('')
     const password = ref('')
+
     const { dispatch, state } = useStore()
     const { push } = useRouter()
 
@@ -79,6 +85,14 @@ export default {
       error,
       loading,
     }
+  },
+  methods: {
+    focusInput() {
+      this.$refs.input.focus()
+    },
+  },
+  mounted() {
+    this.focusInput()
   },
 }
 </script>
