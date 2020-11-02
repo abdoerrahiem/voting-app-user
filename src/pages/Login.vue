@@ -1,36 +1,4 @@
 <template>
-  <!-- <div class="login">
-    <div>
-      <div class="login__left">
-        <img src="../assets/login.png" alt="login" />
-      </div>
-      <div class="login__right">
-        <div>
-          <div class="balloon"></div>
-          <h1>Welcome!</h1>
-          <h3>Masukan Account Anda!</h3>
-          <Alert v-if="error !== null" :error="true" :message="error" />
-          <form @submit.prevent="handleSubmit">
-            <div>
-              <i class="fas fa-user" />
-              <input type="text" placeholder="Username" v-model="username" />
-            </div>
-            <div>
-              <i class="fas fa-lock" />
-              <input
-                type="password"
-                placeholder="Password"
-                v-model="password"
-              />
-            </div>
-            <button type="submit">
-              <i class="fas fa-sign-in-alt" /> Login
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <main>
     <div class="container">
       <div
@@ -45,6 +13,7 @@
           <h2 class="text-center text-white">Welcome!</h2>
           <h4 class="text-center text-white">Masukan Account Anda!</h4>
           <Alert v-if="error !== null" :error="true" :message="error" />
+          <Spinner v-if="loading" />
           <form @submit.prevent="handleSubmit">
             <div>
               <i class="fas fa-user" />
@@ -76,11 +45,13 @@ import { ref, computed, watchEffect } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import Alert from '../components/Alert'
+import Spinner from '../components/Spinner'
 
 export default {
   name: 'Login',
   components: {
     Alert,
+    Spinner,
   },
   setup() {
     const username = ref('')
@@ -106,6 +77,7 @@ export default {
       password,
       handleSubmit,
       error,
+      loading,
     }
   },
 }

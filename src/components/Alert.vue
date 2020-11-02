@@ -33,6 +33,7 @@ export default {
   padding: 1rem;
   position: relative;
   border-radius: 5px;
+  width: 100%;
 }
 
 .alert.success {

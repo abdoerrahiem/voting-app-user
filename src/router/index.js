@@ -5,12 +5,14 @@ import Nominees from '../pages/Nominees'
 import QuickCount from '../pages/QuickCount'
 import Voting from '../pages/Voting'
 import NomineeProfile from '../pages/NomineeProfile'
+import Profile from '../pages/Profile'
 import NotFound from '../pages/NotFound'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', name: 'Home', component: Home },
+    { path: '/:username', name: 'Profile', component: Profile },
     { path: '/login', name: 'Login', component: Login },
     { path: '/nominees', name: 'Nominees', component: Nominees },
     {

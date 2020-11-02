@@ -50,6 +50,20 @@ const users = {
 
       commit('setLoading', false)
     },
+    editUser: async ({ commit }, enteredData) => {
+      commit('setLoading', true)
+
+      try {
+        const { data } = await axios.put(`${api}/users/me`, enteredData, config)
+        localStorage.setItem('token', data.user.token)
+        setAuthToken(data.user.token)
+        commit('editUser', data)
+      } catch (error) {
+        commit('setError', error.response.data)
+      }
+
+      commit('setLoading', false)
+    },
     logout: async ({ commit }) => commit('logout'),
   },
 
@@ -64,6 +78,15 @@ const users = {
     loginUser: (state, userData) => {
       state.token = userData.token
       state.isAuth = true
+    },
+    editUser: (state, userData) => {
+      state.token = userData.user.token
+      state.isAuth = true
+      state.success = userData.message
+
+      setTimeout(() => {
+        state.success = null
+      }, 3000)
     },
     getCurrentUser: (state, userData) => {
       state.userData = userData.data

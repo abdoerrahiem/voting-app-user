@@ -22,6 +22,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
+          <Spinner v-if="loading" class="mr-4" />
+          <router-link
+            v-if="user"
+            :to="`/${user.username}`"
+            class="nav-link active mr-4 w3-animate-top"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+          >
+            <img :src="user.photo" :alt="user.name" />
+            {{ user.name }}
+          </router-link>
           <router-link
             to="/quick-count"
             :class="
@@ -74,20 +85,34 @@
 <script>
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import Spinner from './Spinner'
 
 export default {
   name: 'Navbar',
+  components: {
+    Spinner,
+  },
   setup() {
     const { state, dispatch } = useStore()
 
     const user = computed(() => state.users.userData)
+    const loading = computed(() => state.users.loading)
 
     const handleLogout = () => dispatch('users/logout')
 
     return {
       user,
+      loading,
       handleLogout,
     }
   },
 }
 </script>
+
+<style scoped>
+img {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+}
+</style>
