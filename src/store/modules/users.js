@@ -64,6 +64,22 @@ const users = {
 
       commit('setLoading', false)
     },
+    editPhoto: async ({ commit }, photoData) => {
+      commit('setLoading', true)
+
+      try {
+        const { data } = await axios.put(
+          `${api}/users/me/photo`,
+          photoData,
+          config
+        )
+        commit('editPhoto', data)
+      } catch (error) {
+        commit('setError', error.response.data)
+      }
+
+      commit('setLoading', false)
+    },
     logout: async ({ commit }) => commit('logout'),
   },
 
@@ -82,6 +98,13 @@ const users = {
     editUser: (state, userData) => {
       state.token = userData.user.token
       state.isAuth = true
+      state.success = userData.message
+
+      setTimeout(() => {
+        state.success = null
+      }, 3000)
+    },
+    editPhoto: (state, userData) => {
       state.success = userData.message
 
       setTimeout(() => {
