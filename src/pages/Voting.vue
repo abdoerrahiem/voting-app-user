@@ -3,7 +3,7 @@
     <div
       class="container d-flex flex-wrap justify-content-center align-items-center w3-animate-top"
     >
-      <CountDown :setShowCard="setShowCard" :setHideCard="setHideCard" />
+      <CountDown @set-show-card="setShowCard" @set-hide-card="setHideCard" />
       <div v-if="showCard">
         <NomineeCard
           v-for="candidate in candidates"

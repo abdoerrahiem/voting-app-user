@@ -27,7 +27,7 @@ const users = {
         const { data } = await axios.get(`${api}/users/me`)
         commit('getCurrentUser', data)
       } catch (error) {
-        console.log(error.response.data)
+        commit('setError', error.response.data)
       }
 
       commit('setLoading', false)
