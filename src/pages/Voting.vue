@@ -1,17 +1,13 @@
 <template>
-  <main>
-    <div
-      class="container d-flex flex-wrap justify-content-center align-items-center w3-animate-top"
-    >
-      <CountDown @set-show-card="setShowCard" @set-hide-card="setHideCard" />
-      <div v-if="showCard">
-        <NomineeCard
-          v-for="candidate in candidates"
-          :key="candidate._id"
-          :candidate="candidate"
-          :voting="true"
-        />
-      </div>
+  <main class="container">
+    <div class="cards w3-animate-top">
+      <!-- <CountDown @set-show-card="setShowCard" @set-hide-card="setHideCard" /> -->
+      <NomineeCard
+        v-for="candidate in candidates"
+        :key="candidate._id"
+        :candidate="candidate"
+        :voting="true"
+      />
     </div>
 
     <Spinner v-if="loading && candidates.length === 0" />
@@ -23,14 +19,14 @@ import { onMounted, computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import NomineeCard from '../components/NomineeCard'
 import Spinner from '../components/Spinner'
-import CountDown from '../components/CountDown'
+// import CountDown from '../components/CountDown'
 
 export default {
   name: 'Voting',
   components: {
     NomineeCard,
     Spinner,
-    CountDown,
+    // CountDown,
   },
   setup() {
     const showCard = ref(false)

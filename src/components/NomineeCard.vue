@@ -4,7 +4,7 @@
     @set-hide-modal="setHideModal"
     :candidateId="candidate._id"
   />
-  <div class="card m-3" style="width: 360px">
+  <div class="card">
     <div class="card-body">
       <div class="row">
         <div

@@ -1,8 +1,6 @@
 <template>
-  <main>
-    <div
-      class="container d-flex flex-wrap justify-content-center align-items-center w3-animate-bottom"
-    >
+  <main class="container">
+    <div class="cards w3-animate-bottom">
       <NomineeCard
         v-for="candidate in candidates"
         :key="candidate._id"
