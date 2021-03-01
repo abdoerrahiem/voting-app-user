@@ -51,6 +51,7 @@ p {
 
 .card {
   width: 25rem;
+  margin: 1rem;
 }
 
 .cards {
